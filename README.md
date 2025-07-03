@@ -29,6 +29,7 @@ Material esta no caminho:
 * Nicole
 * Natasha
 * Pedrinho 
+* Bernardo 
 
 # Grupo 03
 * Murilo
