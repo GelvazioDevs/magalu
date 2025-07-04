@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analise de Sentimento em Redes Sociais</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .header {
+        text-align: center;
+        color: white;
+        margin-bottom: 40px;
+    }
+
+    .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    .tab-menu {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .tab-menu button {
+        padding: 10px 20px;
+        margin: 0 5px;
+        border: none;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .tab-menu button.active {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .main-content {
+        background: rgba(255,255,255,0.95);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    .api-section {
+        margin-bottom: 40px;
+    }
+
+    .api-section h3 {
+        color: #4a5568;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+    }
+
+    .action-form {
+        margin-bottom: 20px;
+        padding: 20px;
+        background: #f7fafc;
+        border-radius: 10px;
+        border: 1px solid #e2e8f0;
+    }
+
+    .action-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .action-form input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .action-form button {
+        padding: 10px 20px;
+        background-color: #667eea;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .action-form button:hover {
+        background-color: #764ba2;
+    }
+
+    .response {
+        margin-top: 20px;
+        padding: 20px;
+        background: #f0f0f0;
+        border-radius: 5px;
+        white-space: pre-wrap;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📊 Plataforma de Análise de Sentimentos</h1>
+            <p>Transformando dados das redes sociais em insights acionáveis</p>
+        </header>
+
+        <div class="tab-menu" id="tab-menu"></div>
+
+        <main class="main-content" id="main-content">
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Plataforma de Análise de Sentimentos. Desenvolvido com IA e Machine Learning.</p>
+        </footer>
+    </div>
+
+    <script type="module">
+        import * as services from './script.js';
+
+        const tabMenu = document.getElementById('tab-menu');
+        const mainContent = document.getElementById('main-content');
+
+        function createForm(serviceName, methodName, params) {
+            const form = document.createElement('form');
+            form.className = 'action-form';
+            
+            form.innerHTML = `<h3>${methodName}</h3>`;
+
+            params.forEach(param => {
+                form.innerHTML += `
+                    <label for="${serviceName}-${methodName}-${param}">${param}</label>
+                    <input type="text" id="${serviceName}-${methodName}-${param}" name="${param}">
+                `;
+            });
+
+            form.innerHTML += '<button type="submit">Executar</button>';
+            form.innerHTML += '<div class="response"></div>';
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                const values = Array.from(formData.values());
+                const responseDiv = e.target.querySelector('.response');
+                try {
+                    const result = await services[serviceName][methodName](...values);
+                    responseDiv.textContent = JSON.stringify(result, null, 2);
+                } catch (error) {
+                    responseDiv.textContent = 'Erro: ' + error.message;
+                }
+            });
+
+            return form;
+        }
+
+        function createButton(serviceName, methodName) {
+            const buttonContainer = document.createElement('div');
+            buttonContainer.className = 'action-form';
+            buttonContainer.innerHTML = `
+                <h3>${methodName}</h3>
+                <button>${methodName}</button>
+                <div class="response"></div>
+            `;
+
+            buttonContainer.querySelector('button').addEventListener('click', async () => {
+                const responseDiv = buttonContainer.querySelector('.response');
+                try {
+                    const result = await services[serviceName][methodName]();
+                    responseDiv.textContent = JSON.stringify(result, null, 2);
+                } catch (error) {
+                    responseDiv.textContent = 'Erro: ' + error.message;
+                }
+            });
+
+            return buttonContainer;
+        }
+
+        const serviceActions = {
+            UsuarioService: {
+                criar: ['usuario'],
+                buscarTodos: [],
+                buscarPorId: ['id'],
+                atualizar: ['id', 'usuario'],
+                deletar: ['id'],
+                buscarPorEmail: ['email']
+            },
+            ClienteService: {
+                criar: ['cliente'],
+                buscarTodos: [],
+                buscarPorId: ['id'],
+                atualizar: ['id', 'cliente'],
+                deletar: ['id'],
+                buscarPorCnpj: ['cnpj'],
+                buscarPorUsuario: ['usuarioId']
+            },
+            RedeSocialService: {
+                criar: ['redeSocial'],
+                buscarTodos: [],
+                buscarPorId: ['id'],
+                atualizar: ['id', 'redeSocial'],
+                deletar: ['id'],
+                buscarPorNome: ['nome']
+            },
+            PalavraChaveService: {
+                criar: ['palavraChave'],
+                buscarTodos: [],
+                buscarPorId: ['id'],
+                atualizar: ['id', 'palavraChave'],
+                deletar: ['id'],
+                buscarPorCliente: ['clienteId'],
+                buscarAtivas: []
+            },
+            PostService: {
+                criar: ['post'],
+                buscarTodos: [],
+                buscarPorId: ['id'],
+                atualizar: ['id', 'post'],
+                deletar: ['id'],
+                buscarPorCliente: ['clienteId'],
+                buscarPorRedeSocial: ['redeSocialId'],
+                buscarPorPeriodo: ['dataInicio', 'dataFim']
+            },
+            AnaliseSentimentoService: {
+                criar: ['analise'],
+                buscarTodos: [],
+                buscarPorId: ['id'],
+                atualizar: ['id', 'analise'],
+                deletar: ['id'],
+                buscarPorPost: ['postId'],
+                buscarPorClassificacao: ['classificacao']
+            },
+            AlertaService: {
+                criar: ['alerta'],
+                buscarTodos: [],
+                buscarPorId: ['id'],
+                atualizar: ['id', 'alerta'],
+                deletar: ['id'],
+                buscarPorCliente: ['clienteId'],
+                buscarNaoLidos: [],
+                marcarComoLido: ['id']
+            },
+            RelatorioService: {
+                criar: ['relatorio'],
+                buscarTodos: [],
+                buscarPorId: ['id'],
+                atualizar: ['id', 'relatorio'],
+                deletar: ['id'],
+                buscarPorCliente: ['clienteId'],
+                buscarPorPeriodo: ['dataInicio', 'dataFim'],
+                gerarRelatorioAutomatico: ['clienteId', 'tipoRelatorio'],
+                enviarPorEmail: ['id', 'destinatarios']
+            },
+            ConfiguracaoMonitoramentoService: {
+                criar: ['configuracao'],
+                buscarTodos: [],
+                buscarPorId: ['id'],
+                atualizar: ['id', 'configuracao'],
+                deletar: ['id'],
+                buscarPorCliente: ['clienteId'],
+                ativarMonitoramento: ['id'],
+                desativarMonitoramento: ['id']
+            },
+            MetricaAgregadaService: {
+                buscarPorCliente: ['clienteId', 'dataInicio', 'dataFim'],
+                buscarPorRedeSocial: ['clienteId', 'redeSocialId', 'dataInicio', 'dataFim'],
+                calcularMetricasEmTempoReal: ['clienteId'],
+                exportarDados: ['clienteId', 'formato', 'dataInicio', 'dataFim']
+            },
+            LogSistemaService: {
+                buscarLogs: ['clienteId', 'tipoLog', 'nivel', 'dataInicio', 'dataFim'],
+                buscarErros: ['clienteId', 'dataInicio', 'dataFim'],
+                limparLogsAntigos: ['dias']
+            },
+            DashboardService: {
+                obterMetricasGerais: ['clienteId'],
+                obterTendencias: ['clienteId', 'periodo'],
+                obterTopInfluenciadores: ['clienteId', 'limite'],
+                obterPalavrasChave: ['clienteId', 'periodo'],
+                obterSentimentoPorRedeSocial: ['clienteId'],
+                obterAlertasRecentes: ['clienteId', 'limite']
+            },
+            AuthService: {
+                login: ['credenciais'],
+                logout: [],
+                refreshToken: [],
+                verificarPermissao: ['recurso', 'acao'],
+                alterarSenha: ['senhaAtual', 'novaSenha']
+            },
+            NotificacaoService: {
+                enviarNotificacao: ['destinatario', 'titulo', 'mensagem', 'tipo'],
+                configurarWebhook: ['url', 'eventos'],
+                buscarNotificacoes: ['usuarioId', 'lidas'],
+                marcarComoLida: ['notificacaoId']
+            }
+        };
+
+        let firstTab = true;
+
+        for (const serviceName in serviceActions) {
+            const tabButton = document.createElement('button');
+            tabButton.textContent = serviceName.replace('Service', '');
+            tabButton.dataset.tab = serviceName;
+            tabMenu.appendChild(tabButton);
+
+            const tabContent = document.createElement('div');
+            tabContent.id = serviceName;
+            tabContent.className = 'tab-content';
+            mainContent.appendChild(tabContent);
+
+            if (firstTab) {
+                tabButton.classList.add('active');
+                tabContent.classList.add('active');
+                firstTab = false;
+            }
+
+            for (const methodName in serviceActions[serviceName]) {
+                const params = serviceActions[serviceName][methodName];
+                if (params.length > 0) {
+                    tabContent.appendChild(createForm(serviceName, methodName, params));
+                } else {
+                    tabContent.appendChild(createButton(serviceName, methodName));
+                }
+            }
+        }
+
+        tabMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') {
+                const tab = e.target.dataset.tab;
+
+                document.querySelectorAll('.tab-menu button').forEach(button => {
+                    button.classList.remove('active');
+                });
+                e.target.classList.add('active');
+
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(tab).classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+{
+    "usuario": [
+        {
+            "id": 1,
+            "nome": "João Silva",
+            "email": "joao.silva@email.com",
+            "senha_hash": "$2b$10$abcdefg1234567890",
+            "tipo_usuario": "empresa",
+            "status": "Ativo",
+            "data_criacao": "2024-06-01T10:00:00Z",
+            "data_atualizacao": "2024-06-01T10:00:00Z"
+        },
+        {
+            "id": 2,
+            "nome": "Maria Souza",
+            "email": "maria.souza@email.com",
+            "senha_hash": "$2b$10$hijklmn9876543210",
+            "tipo_usuario": "pesquisador",
+            "status": "Ativo",
+            "data_criacao": "2024-06-02T11:30:00Z",
+            "data_atualizacao": "2024-06-02T11:30:00Z"
+        }
+    ],
+
+    "cliente": [
+        {
+            "id": 1,
+            "usuario_id": 1,
+            "nome_empresa": "Tech Solutions Ltda",
+            "cnpj": "12.345.678/0001-90",
+            "setor_atividade": "Tecnologia",
+            "tamanho_empresa": "media",
+            "contato_principal": "Carlos Pereira",
+            "telefone": "(11) 99999-8888",
+            "endereco": "Rua das Flores, 123, São Paulo, SP",
+            "plano_assinatura": "Premium",
+            "data_inicio_contrato": "2024-06-10",
+            "data_fim_contrato": "2025-06-10",
+            "status": "Ativo",
+            "observacoes": "Cliente estratégico para expansão.",
+            "data_criacao": "2024-06-10T09:00:00Z",
+            "data_atualizacao": "2024-06-10T09:00:00Z"
+        },
+        {
+            "id": 2,
+            "usuario_id": 1,
+            "nome_empresa": "Comercial Silva ME",
+            "cnpj": "98.765.432/0001-12",
+            "setor_atividade": "Comércio",
+            "tamanho_empresa": "pequena",
+            "contato_principal": "Ana Lima",
+            "telefone": "(21) 98888-7777",
+            "endereco": "Av. Central, 456, Rio de Janeiro, RJ",
+            "plano_assinatura": "Básico",
+            "data_inicio_contrato": "2024-06-15",
+            "data_fim_contrato": "2025-06-15",
+            "status": "Ativo",
+            "observacoes": "",
+            "data_criacao": "2024-06-15T10:30:00Z",
+            "data_atualizacao": "2024-06-15T10:30:00Z"
+        },
+        {
+            "id": 3,
+            "usuario_id": 2,
+            "nome_empresa": "Indústria Souza S/A",
+            "cnpj": "11.222.333/0001-44",
+            "setor_atividade": "Indústria",
+            "tamanho_empresa": "grande",
+            "contato_principal": "Roberto Souza",
+            "telefone": "(31) 97777-6666",
+            "endereco": "Rodovia BR-101, Km 200, Belo Horizonte, MG",
+            "plano_assinatura": "Enterprise",
+            "data_inicio_contrato": "2024-07-01",
+            "data_fim_contrato": "2025-07-01",
+            "status": "Ativo",
+            "observacoes": "Contrato anual com possibilidade de renovação.",
+            "data_criacao": "2024-07-01T08:00:00Z",
+            "data_atualizacao": "2024-07-01T08:00:00Z"
+        }
+    ],
+
+    "rede_social": [
+        {
+            "id": 1,
+            "nome": "Twitter",
+            "tipo_conteudo": "texto",
+            "api_disponivel": true,
+            "limite_requisicoes": 500,
+            "status": "Ativo",
+            "data_criacao": "2024-06-20T12:00:00Z"
+        },
+        {
+            "id": 2,
+            "nome": "Instagram",
+            "tipo_conteudo": "imagem",
+            "api_disponivel": true,
+            "limite_requisicoes": 300,
+            "status": "Ativo",
+            "data_criacao": "2024-06-20T12:05:00Z"
+        },
+        {
+            "id": 3,
+            "nome": "YouTube",
+            "tipo_conteudo": "video",
+            "api_disponivel": false,
+            "limite_requisicoes": 0,
+            "status": "Inativo",
+            "data_criacao": "2024-06-20T12:10:00Z"
+        }
+    ],
+
+    "palavra_chave": [
+        {
+            "id": 1,
+            "cliente_id": 1,
+            "termo": "Magalu",
+            "tipo": "marca",
+            "idioma": "pt-BR",
+            "ativo": true,
+            "data_criacao": "2024-06-21T14:00:00Z",
+            "data_atualizacao": "2024-06-21T14:00:00Z"
+        },
+        {
+            "id": 2,
+            "cliente_id": 1,
+            "termo": "E-commerce",
+            "tipo": "geral",
+            "idioma": "pt-BR",
+            "ativo": true,
+            "data_criacao": "2024-06-21T14:05:00Z",
+            "data_atualizacao": "2024-06-21T14:05:00Z"
+        },
+        {
+            "id": 3,
+            "cliente_id": 2,
+            "termo": "Promoção",
+            "tipo": "geral",
+            "idioma": "pt-BR",
+            "ativo": true,
+            "data_criacao": "2024-06-21T14:10:00Z",
+            "data_atualizacao": "2024-06-21T14:10:00Z"
+        },
+        {
+            "id": 4,
+            "cliente_id": 3,
+            "termo": "ConcorrenteX",
+            "tipo": "concorrente",
+            "idioma": "pt-BR",
+            "ativo": false,
+            "data_criacao": "2024-06-21T14:15:00Z",
+            "data_atualizacao": "2024-06-21T14:15:00Z"
+        }
+    ],
+
+    "post": [
+        {
+            "id": 1,
+            "rede_social_id": 1,
+            "cliente_id": 1,
+            "palavra_chave_id": 1,
+            "id_externo": "tw-1234567890",
+            "autor": "user_twitter",
+            "conteudo": "Magalu lança nova promoção de e-commerce!",
+            "url_post": "https://twitter.com/user_twitter/status/1234567890",
+            "data_postagem": "2024-06-22T15:00:00Z",
+            "likes": 120,
+            "compartilhamentos": 30,
+            "comentarios": 15,
+            "alcance_estimado": 5000,
+            "localizacao": "São Paulo, SP",
+            "idioma": "pt-BR",
+            "coletado_em": "2024-06-22T15:05:00Z",
+            "status": "Processado"
+        },
+        {
+            "id": 2,
+            "rede_social_id": 2,
+            "cliente_id": 2,
+            "palavra_chave_id": 3,
+            "id_externo": "ig-9876543210",
+            "autor": "ana_insta",
+            "conteudo": "Promoção imperdível na Comercial Silva ME!",
+            "url_post": "https://instagram.com/p/9876543210",
+            "data_postagem": "2024-06-23T10:30:00Z",
+            "likes": 85,
+            "compartilhamentos": 10,
+            "comentarios": 8,
+            "alcance_estimado": 2000,
+            "localizacao": "Rio de Janeiro, RJ",
+            "idioma": "pt-BR",
+            "coletado_em": "2024-06-23T10:35:00Z",
+            "status": "Processado"
+        }
+    ],
+
+    "analise_sentimento": [
+        {
+            "id": 1,
+            "post_id": 1,
+            "score_sentimento": 0.85,
+            "classificacao": "positivo",
+            "confianca": 0.92,
+            "modelo_utilizado": "bert-base-portuguese-cased",
+            "emocoes_detectadas": {
+                "alegria": 0.8,
+                "raiva": 0.05,
+                "tristeza": 0.05,
+                "surpresa": 0.1
+            },
+            "entidades_nomeadas": {
+                "pessoas": [],
+                "organizacoes": ["Magalu"],
+                "locais": ["São Paulo"]
+            },
+            "palavras_chave_extraidas": ["Magalu", "promoção", "e-commerce"],
+            "analisado_em": "2024-06-22T15:10:00Z"
+        },
+        {
+            "id": 2,
+            "post_id": 2,
+            "score_sentimento": 0.60,
+            "classificacao": "positivo",
+            "confianca": 0.88,
+            "modelo_utilizado": "bert-base-portuguese-cased",
+            "emocoes_detectadas": {
+                "alegria": 0.7,
+                "raiva": 0.1,
+                "tristeza": 0.1,
+                "surpresa": 0.1
+            },
+            "entidades_nomeadas": {
+                "pessoas": [],
+                "organizacoes": ["Comercial Silva ME"],
+                "locais": ["Rio de Janeiro"]
+            },
+            "palavras_chave_extraidas": ["promoção", "Comercial Silva ME"],
+            "analisado_em": "2024-06-23T10:40:00Z"
+        }
+    ],
+
+    "alerta": [
+        {
+            "id": 1,
+            "cliente_id": 1,
+            "tipo_alerta": "crise",
+            "titulo": "Crise detectada: Sentimento negativo elevado",
+            "descricao": "Foi detectado um aumento significativo de menções negativas relacionadas à Magalu nas redes sociais.",
+            "severidade": "alta",
+            "post_id": 1,
+            "dados_alerta": {
+                "score_medio_sentimento": -0.7,
+                "quantidade_mencoes": 25,
+                "periodo": "2024-06-22T00:00:00Z/2024-06-22T23:59:59Z"
+            },
+            "lido": false,
+            "acao_tomada": "",
+            "criado_em": "2024-06-22T16:00:00Z",
+            "lido_em": null
+        },
+        {
+            "id": 2,
+            "cliente_id": 2,
+            "tipo_alerta": "mencao_importante",
+            "titulo": "Menção importante: Influenciador citou a empresa",
+            "descricao": "Um influenciador relevante mencionou Comercial Silva ME em uma postagem.",
+            "severidade": "media",
+            "post_id": 2,
+            "dados_alerta": {
+                "influenciador": "ana_insta",
+                "alcance_estimado": 2000,
+                "palavras_chave": ["promoção", "Comercial Silva ME"]
+            },
+            "lido": false,
+            "acao_tomada": "",
+            "criado_em": "2024-06-23T11:00:00Z",
+            "lido_em": null
+        }
+    ],
+
+    "relatorio": [
+        {
+            "id": 1,
+            "cliente_id": 1,
+            "tipo_relatorio": "mensal",
+            "periodo_inicio": "2024-06-01",
+            "periodo_fim": "2024-06-30",
+            "titulo": "Relatório Mensal de Sentimento - Junho 2024",
+            "resumo_executivo": "O relatório apresenta uma visão geral do sentimento nas redes sociais sobre a Tech Solutions Ltda durante junho de 2024.",
+            "metricas": {
+                "sentimento_medio": 0.72,
+                "total_posts": 320,
+                "mencoes_positivas": 210,
+                "mencoes_negativas": 60,
+                "mencoes_neutras": 50,
+                "alcance_total": 15000
+            },
+            "insights": "A maioria das menções foi positiva, com destaque para campanhas promocionais.",
+            "recomendacoes": "Manter o foco em campanhas digitais e monitorar possíveis crises.",
+            "arquivo_pdf": "/relatorios/2024-06/relatorio_mensal_tech_solutions.pdf",
+            "status": "Gerado",
+            "criado_em": "2024-07-01T09:00:00Z",
+            "enviado_em": "2024-07-01T10:00:00Z"
+        },
+        {
+            "id": 2,
+            "cliente_id": 2,
+            "tipo_relatorio": "diario",
+            "periodo_inicio": "2024-06-23",
+            "periodo_fim": "2024-06-23",
+            "titulo": "Relatório Diário - 23/06/2024",
+            "resumo_executivo": "Resumo das menções e sentimentos para Comercial Silva ME no dia 23/06/2024.",
+            "metricas": {
+                "sentimento_medio": 0.60,
+                "total_posts": 15,
+                "mencoes_positivas": 10,
+                "mencoes_negativas": 3,
+                "mencoes_neutras": 2,
+                "alcance_total": 2000
+            },
+            "insights": "Menção importante de influenciador gerou aumento de alcance.",
+            "recomendacoes": "Acompanhar engajamento e responder comentários relevantes.",
+            "arquivo_pdf": "/relatorios/2024-06/relatorio_diario_comercial_silva_2024-06-23.pdf",
+            "status": "Gerado",
+            "criado_em": "2024-06-23T12:00:00Z",
+            "enviado_em": "2024-06-23T12:30:00Z"
+        }
+    ],
+
+    "configuracao_monitoramento": [
+        {
+            "id": 1,
+            "cliente_id": 1,
+            "redes_sociais": ["Twitter", "Instagram"],
+            "frequencia_coleta": 15,
+            "horario_inicio": "08:00:00",
+            "horario_fim": "18:00:00",
+            "filtros_geograficos": {
+                "estados": ["SP", "RJ"],
+                "cidades": ["São Paulo", "Rio de Janeiro"]
+            },
+            "filtros_idioma": ["pt-BR"],
+            "alertas_configuracao": {
+                "sentimento_negativo_limite": -0.5,
+                "mencoes_minimas": 10
+            },
+            "ativo": true,
+            "data_criacao": "2024-06-25T08:00:00Z",
+            "data_atualizacao": "2024-06-25T08:00:00Z"
+        },
+        {
+            "id": 2,
+            "cliente_id": 2,
+            "redes_sociais": ["Instagram"],
+            "frequencia_coleta": 30,
+            "horario_inicio": "09:00:00",
+            "horario_fim": "17:00:00",
+            "filtros_geograficos": {
+                "estados": ["RJ"],
+                "cidades": ["Rio de Janeiro"]
+            },
+            "filtros_idioma": ["pt-BR"],
+            "alertas_configuracao": {
+                "sentimento_negativo_limite": -0.3,
+                "mencoes_minimas": 5
+            },
+            "ativo": true,
+            "data_criacao": "2024-06-25T09:00:00Z",
+            "data_atualizacao": "2024-06-25T09:00:00Z"
+        }
+    ],
+
+    "metrica_agregada": [
+        {
+            "id": 1,
+            "cliente_id": 1,
+            "data_metrica": "2024-06-22",
+            "rede_social_id": 1,
+            "total_posts": 120,
+            "sentimento_medio": 0.75,
+            "posts_positivos": 90,
+            "posts_negativos": 15,
+            "posts_neutros": 15,
+            "alcance_total": 8000,
+            "engajamento_medio": 45.50,
+            "top_palavras_chave": ["Magalu", "promoção", "e-commerce"],
+            "top_influenciadores": ["user_twitter", "influencer_joao"],
+            "criado_em": "2024-06-22T23:59:59Z"
+        },
+        {
+            "id": 2,
+            "cliente_id": 2,
+            "data_metrica": "2024-06-23",
+            "rede_social_id": 2,
+            "total_posts": 15,
+            "sentimento_medio": 0.60,
+            "posts_positivos": 10,
+            "posts_negativos": 3,
+            "posts_neutros": 2,
+            "alcance_total": 2000,
+            "engajamento_medio": 32.00,
+            "top_palavras_chave": ["promoção", "Comercial Silva ME"],
+            "top_influenciadores": ["ana_insta"],
+            "criado_em": "2024-06-23T23:59:59Z"
+        }
+    ],
+
+    "log_sistema": [
+        {
+            "id": 1,
+            "tipo_log": "coleta",
+            "cliente_id": 1,
+            "mensagem": "Coleta de posts iniciada para o cliente Tech Solutions Ltda.",
+            "dados_adicional": {
+                "redes_sociais": ["Twitter", "Instagram"],
+                "palavras_chave": ["Magalu", "E-commerce"]
+            },
+            "nivel": "info",
+            "criado_em": "2024-06-22T08:00:00Z"
+        },
+        {
+            "id": 2,
+            "tipo_log": "analise",
+            "cliente_id": 2,
+            "mensagem": "Análise de sentimento concluída para post ig-9876543210.",
+            "dados_adicional": {
+                "post_id": 2,
+                "score_sentimento": 0.60,
+                "classificacao": "positivo"
+            },
+            "nivel": "info",
+            "criado_em": "2024-06-23T10:45:00Z"
+        },
+        {
+            "id": 3,
+            "tipo_log": "erro",
+            "cliente_id": 1,
+            "mensagem": "Falha ao coletar posts do Twitter: limite de requisições excedido.",
+            "dados_adicional": {
+                "erro": "RateLimitExceeded",
+                "limite": 500
+            },
+            "nivel": "error",
+            "criado_em": "2024-06-22T12:30:00Z"
+        }
+    ]
+}
