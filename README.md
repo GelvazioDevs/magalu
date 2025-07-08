@@ -27,12 +27,12 @@ ORDEM DE APRESENTACAO - SORTEIO
 
 # DADOS DO PROJETO
 * 1 API FUNCIONANDO EM JAVA
+
 * 1 PAGINA HTML COM LOGIN FUNCIONANDO - PODE FAZER COM IA , OU ESCOLHER DA LISTA DE LOGIN, CRIAR NA MÃO
    *  A pagina de login deve se conectar na API e fazer o login e redirecionar para a pagima home.html, 
    conteudo apenas HOME, no primeiro momento.
 
 * RESTANTE DO FRONT END GERAR USANDO IA E ACESSANDO A API E "GEMINI PRO CLI" - EXPLICAR COMO INSTALAR E TESTAR
-
 
 # Grupo 01
 * Carlos Amaury
@@ -51,7 +51,7 @@ ORDEM DE APRESENTACAO - SORTEIO
 * Eduardo Selbmam
 * Bernardo
 * Projeto API em JAVA:biblioteca
-
+* João Pedro 
 
 # FALTANTES - PASSAR ATIVIDADE DEPOIS
 * João Pedro - FALTOU AULA DE 04-07-2025
