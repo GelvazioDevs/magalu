@@ -28,9 +28,7 @@
 - **Preço**: Valor do produto
 - **Preço Promocional**: Valor com desconto (opcional)
 - **Categoria**: Eletrônicos, Roupas, Livros, etc.
-- Estoque
-
-
+- **Estoque**: Quantidade no estoque
 
 [#### 3. Cadastro de Pedidos
 - **ID do Pedido**: Código único do pedido
