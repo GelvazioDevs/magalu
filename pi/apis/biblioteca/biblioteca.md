@@ -4,7 +4,7 @@
 - **ORM**: JPA/Hibernate
 - **Segurança**: Spring Security + JWT - Não é obrigatorio...
 - **Documentação**: Swagger/OpenAPI - Exemplo no projeto MAGALU
-- **Testes**: JUnit 5 + Mockito - NAO E OBRIGATORIO
+- **Testes**: JUnit 5 + Mockito
 - **Build**: Maven
 - **Versionamento**: Git
 

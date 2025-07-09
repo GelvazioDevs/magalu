@@ -20,42 +20,22 @@ Material esta no caminho:
        * Programador Sistemas Java
          * Teste de Software
 # Grupos
-
-PROJETOS DE API - SORTEIO
-
-ORDEM DE APRESENTACAO - SORTEIO
-
-# DADOS DO PROJETO
-* 1 API FUNCIONANDO EM JAVA
-
-* 1 PAGINA HTML COM LOGIN FUNCIONANDO - PODE FAZER COM IA , OU ESCOLHER DA LISTA DE LOGIN, CRIAR NA MÃO
-   *  A pagina de login deve se conectar na API e fazer o login e redirecionar para a pagima home.html, 
-   conteudo apenas HOME, no primeiro momento.
-
-* RESTANTE DO FRONT END GERAR USANDO IA E ACESSANDO A API E "GEMINI PRO CLI" - EXPLICAR COMO INSTALAR E TESTAR
-
 # Grupo 01
 * Carlos Amaury
 * Luiz Paulo
 * Carlos Feltrin
-* Projeto API em JAVA:ecommerce
+* PABLO ALEXANDRE MORAES ALMEIDA
 
 # Grupo 02
 * Nicole
 * Natasha
 * Pedrinho 
-* Projeto API em JAVA:escola
 
 # Grupo 03
-* Murilo 
+* Murilo
 * Eduardo Selbmam
+* João Pedro
 * Bernardo
-* Projeto API em JAVA:biblioteca
-* João Pedro 
-
-# FALTANTES - PASSAR ATIVIDADE DEPOIS
-* João Pedro - FALTOU AULA DE 04-07-2025
-* PABLO ALEXANDRE MORAES ALMEIDA - FALTOU NA AULA DE 04-07-2025 e na aula de 08-07-2025
 
 # Data Apresentação Projeto Integrador:
 * 11 de julho de 2025

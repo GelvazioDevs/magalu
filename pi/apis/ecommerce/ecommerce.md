@@ -14,6 +14,7 @@
 - **APIs**: Gestão de produtos, usuários, pedidos, pagamentos
 - **Diferencial**: Sistema de avaliações e recomendações
 
+
 ### Funcionalidades Detalhadas da Plataforma de E-commerce:
 
 #### 1. Cadastro de Produtos

@@ -20,7 +20,7 @@ import com.example.magalu.service.AgendamentoService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/agendamentos")
+@RequestMapping("/api/v1/agendamentos")
 @RequiredArgsConstructor
 public class AgendamentoController {
 
@@ -56,6 +56,12 @@ public class AgendamentoController {
     public ResponseEntity<AgendamentoResponseDTO> agendar(@RequestBody AgendamentoRequestDTO requestDTO) {
         AgendamentoResponseDTO responseDTO = service.agendar(requestDTO);        
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
-    }
+    }   
 
+    @GetMapping("/docs")
+    public String swagger() {
+        return "Swagger UI disponível em: <a href='/swagger-ui/index.html'>/swagger-ui/index.html</a><br>" +
+                "OpenAPI JSON disponível em: <a href='/v3/api-docs'>/v3/api-docs</a><br>" +
+                "OpenAPI YAML disponível em: <a href='/v3/api-docs.yaml'>/v3/api-docs.yaml</a>";
+    }
 }
