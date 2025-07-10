@@ -1,0 +1,122 @@
+@import url('usuarios.css');
+
+.calendario-tabela-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px #2e86de33;
+  padding: 16px 0 24px 0;
+  border: 5px solid #2e86de;
+}
+.calendario-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: 0.98rem;
+}
+.calendario-tabela th, .calendario-tabela td {
+  border-bottom: 1.5px solid #2e86de;
+  padding: 8px 10px;
+  text-align: left;
+  color: #222;
+}
+.calendario-tabela th {
+  background: #003366;
+  color: #e3f0ff;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.calendario-tabela tr {
+  transition: background 0.2s;
+}
+.calendario-tabela tr:hover {
+  background: #e3f0ff;
+}
+@media (max-width: 700px) {
+  .calendario-tabela-container { max-width: 98vw; }
+  .calendario-tabela th, .calendario-tabela td { font-size: 0.93rem; padding: 6px 4px; }
+}
+@media (max-width: 500px) {
+  .calendario-tabela-container { padding: 0 2px; }
+  .calendario-tabela th, .calendario-tabela td { font-size: 0.89rem; }
+}
+.content h2, .content h3 {
+  color: #fff;
+  text-shadow: 0 2px 8px #000, 0 0 2px #2e86de;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+.evento-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px #2e86de33;
+  padding: 20px 24px 16px 24px;
+  border: 4px solid #2e86de;
+  max-width: 700px;
+  margin: 0 auto 24px auto;
+  z-index: 2;
+}
+.evento-form-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.evento-form input[type="date"],
+.evento-form input[type="text"],
+.evento-form select {
+  flex: 1 1 140px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #2e86de;
+  font-size: 1rem;
+  background: #f7fbff;
+  color: #003366;
+  outline: none;
+  transition: border 0.2s;
+}
+.evento-form input:focus,
+.evento-form select:focus {
+  border: 2px solid #003366;
+}
+.evento-form textarea {
+  resize: vertical;
+  min-height: 40px;
+  max-height: 120px;
+  border-radius: 8px;
+  border: 1.5px solid #2e86de;
+  font-size: 1rem;
+  padding: 10px 12px;
+  background: #f7fbff;
+  color: #003366;
+  outline: none;
+  transition: border 0.2s;
+}
+.evento-form textarea:focus {
+  border: 2px solid #003366;
+}
+.btn-adicionar-evento {
+  margin-top: 8px;
+  padding: 12px 0;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(90deg, #2e86de 60%, #003366 100%);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #2e86de33;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-adicionar-evento:hover {
+  background: linear-gradient(90deg, #003366 60%, #2e86de 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+@media (max-width: 700px) {
+  .evento-form { max-width: 98vw; padding: 12px 4px; }
+  .evento-form-row { flex-direction: column; gap: 8px; }
+}

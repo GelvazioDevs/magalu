@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Relatórios</title>
+  <link rel="stylesheet" href="usuarios.css">
+  <link rel="stylesheet" href="relatorios.css">
+  <link rel="stylesheet" href="button.css">
+</head>
+<body>
+  <div class="light-bg-anim"></div>
+  <div class="luz-linha"></div>
+  <div class="layout">
+    <div id="sidebar"></div>
+    <div class="content">
+      <h2>Relatórios - Notas</h2>
+      <form id="formRelatorio" class="relatorio-form">
+        <div class="relatorio-form-row">
+          <select name="serie" required></select>
+          <select name="bimestre" required>
+            <option value="">Bimestre</option>
+            <option value="1">1º</option>
+            <option value="2">2º</option>
+            <option value="3">3º</option>
+            <option value="4">4º</option>
+          </select>
+          <button type="submit" class="btn-gerar-relatorio">Gerar Relatório</button>
+          <button type="button" id="btnCriarRelatorio" class="btn-criar-relatorio" style="display:none;margin-left:8px;">Criar Relatório</button>
+        </div>
+      </form>
+      <button class="pesquisar-button" onclick="atualizarTabela()">Pesquisar</button>
+      <h3>Boletim da Turma</h3>
+      <div class="relatorios-tabela-container">
+        <table id="tabelaRelatorio" class="relatorios-tabela">
+          <thead>
+            <tr>
+              <th>Aluno</th>
+              <th>Disciplina</th>
+              <th>Nota</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="../Scripts/md5.js"></script>
+  <script>
+    fetch('sidebar.html').then(res => res.text()).then(data => {
+      document.getElementById('sidebar').innerHTML = data;
+      const usuario = JSON.parse(localStorage.getItem('usuarioLogado')) || { nome: 'Convidado', cargo: 'Convidado', email: '' };
+      document.getElementById('sidebarUsuarioNome').textContent = usuario.nome || 'Convidado';
+      document.getElementById('sidebarUsuarioCargo').textContent = usuario.cargo || 'Convidado';
+      const avatar = document.getElementById('sidebarUsuarioAvatar');
+      if (usuario.email) {
+        const hash = md5(usuario.email.trim().toLowerCase());
+        avatar.src = `https://www.gravatar.com/avatar/${hash}?d=identicon&s=80`;
+      } else {
+        avatar.src = '../Imagens/Usuario.png';
+      }
+      avatar.alt = usuario.nome || 'Convidado';
+      // Permissão: só professor pode criar relatório
+      if (usuario.cargo && usuario.cargo.toLowerCase() === 'professor') {
+        document.getElementById('btnCriarRelatorio').style.display = '';
+      } else {
+        document.getElementById('btnCriarRelatorio').style.display = 'none';
+      }
+    });
+    // Função para buscar relatório da API (deve ser implementada)
+    async function buscarRelatorio(serie, bimestre) {
+      // Implemente a chamada real da API aqui
+      return [];
+    }
+    // Função para buscar séries da API (deve ser implementada)
+    async function buscarSeries() {
+      // Implemente a chamada real da API aqui
+      return [];
+    }
+    // Preencher select de séries dinamicamente
+    (async function preencherSeries() {
+      const selectSerie = document.querySelector('select[name="serie"]');
+      selectSerie.innerHTML = '<option value="">Selecione a Série</option>';
+      const series = await buscarSeries();
+      series.forEach(serie => {
+        const opt = document.createElement('option');
+        opt.value = serie;
+        opt.textContent = serie;
+        selectSerie.appendChild(opt);
+      });
+    })();
+    document.getElementById('formRelatorio').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const serie = form.serie.value;
+      const bimestre = form.bimestre.value;
+      const relatorio = await buscarRelatorio(serie, bimestre);
+      const corpo = document.querySelector('#tabelaRelatorio tbody');
+      corpo.innerHTML = '';
+      relatorio.forEach(r => {
+        const linha = `<tr><td>${r.nome_aluno}</td><td>${r.nome_disciplina}</td><td>${r.nota}</td></tr>`;
+        corpo.innerHTML += linha;
+      });
+    });
+    // Função para criar relatório (deve ser implementada)
+    document.getElementById('btnCriarRelatorio').addEventListener('click', function() {
+      // Implemente a lógica de criação de relatório aqui
+      alert('Funcionalidade de criar relatório deve ser implementada.');
+    });
+  </script>
+</body>
+</html>
