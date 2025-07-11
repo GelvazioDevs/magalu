@@ -1,0 +1,16 @@
+Algoritmo "Algoritmo 1.1.1"
+// Disciplina   : [Linguagem e Lógica de Programação]
+// Professor   : Gelvazio Camargo
+// Descrição   : Aqui você descreve o que o programa faz! (função)
+// Autor(a)    : Yasmim Roeder
+// Data atual  : 19/07/2022
+Var
+// Seção de Declarações das variáveis 
+
+
+Inicio
+// Seção de Comandos, procedimento, funções, operadores, etc...
+Escreva ("O primeiro programa a gente nunca esquece!")
+//Escreval (" ") quebra linha
+
+Fimalgoritmo

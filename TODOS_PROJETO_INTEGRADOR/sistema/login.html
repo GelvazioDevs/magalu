@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Comercial</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,200;1,800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/records.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/menu.css">
+
+    <script src="js/core/utils.js" defer></script>
+    <script src="js/core/apiService.js" defer></script>
+    <script src="js/core/controllerApi.js" defer></script>
+    <script src="js/core/modal.js"></script>
+    <script src="js/core/login.js" defer></script>
+</head>
+
+<style>
+    #message {
+        margin-top: 10px;
+        color: red;
+        text-align: center;
+    }    
+</style>
+
+<body onload="loadModalContainer('login')">
+
+    <p id="message"></p>
+    
+    <div class="container" id="container"></div>
+
+    <footer id="footer">
+        Copyright &copy; Senac - Prof. Gelvazio Camargo
+    </footer>
+
+    <script>
+        function toggleDropdown(id) {
+            // Fecha todos os outros dropdowns
+            document.querySelectorAll('.dropdown').forEach(drop => {
+                if (drop.id !== id) {
+                    drop.classList.remove('show');
+                }
+            });
+
+            // Alterna o dropdown clicado
+            const dropdown = document.getElementById(id);
+            dropdown.classList.toggle('show');
+        }
+
+        // Fecha o dropdown se clicar fora
+        window.onclick = function (event) {
+            if (!event.target.matches('button')) {
+                document.querySelectorAll('.dropdown').forEach(drop => {
+                    drop.classList.remove('show');
+                });
+            }
+        }
+    </script>
+
+</body>
+
+</html>

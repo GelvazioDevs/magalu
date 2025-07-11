@@ -1,0 +1,10 @@
+INSERT INTO usuarios (nome) VALUES ('Ana Silva');
+INSERT INTO usuarios (nome) VALUES ('Bruno Souza');
+INSERT INTO usuarios (nome) VALUES ('Carla Mendes');
+INSERT INTO usuarios (nome) VALUES ('Diego Lima');
+INSERT INTO usuarios (nome) VALUES ('Eduarda Costa');
+INSERT INTO usuarios (nome) VALUES ('Felipe Rocha');
+INSERT INTO usuarios (nome) VALUES ('Gabriela Alves');
+INSERT INTO usuarios (nome) VALUES ('Henrique Dias');
+INSERT INTO usuarios (nome) VALUES ('Isabela Martins');
+INSERT INTO usuarios (nome) VALUES ('João Pereira');

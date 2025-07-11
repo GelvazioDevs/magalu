@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Despesas</title>
+    <link rel="stylesheet" href="modal.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Controle de Despesas</h1>
+            <button id="openModal" class="btn-primary">
+                <span>+</span>
+                Nova Despesa
+            </button>
+        </header>
+
+        <main>
+            <div class="expenses-summary">
+                <div class="summary-card">
+                    <h3>Total de Despesas</h3>
+                    <p id="totalExpenses">R$ 0,00</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Quantidade</h3>
+                    <p id="expenseCount">0</p>
+                </div>
+            </div>
+
+            <div class="expenses-list">
+                <h2>Despesas Cadastradas</h2>
+                <div id="expensesList" class="list-container">
+                    <p class="empty-state">Nenhuma despesa cadastrada ainda.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <dialog id="expenseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Nova Despesa</h2>
+                <button id="closeModal" class="close-btn" aria-label="Fechar modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            
+            <form id="expenseForm" class="modal-form">
+                <div class="form-group">
+                    <label for="description">Descrição</label>
+                    <input 
+                        type="text" 
+                        id="description" 
+                        name="description" 
+                        placeholder="Ex: Almoço, Combustível, Conta de luz..."
+                        required
+                        maxlength="100"
+                    >
+                    <span class="error-message" id="descriptionError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Valor</label>
+                    <input 
+                        type="number" 
+                        id="amount" 
+                        name="amount" 
+                        placeholder="0,00"
+                        step="0.01"
+                        min="0.01"
+                        required
+                    >
+                    <span class="error-message" id="amountError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Data</label>
+                    <input 
+                        type="date" 
+                        id="date" 
+                        name="date" 
+                        required
+                    >
+                    <span class="error-message" id="dateError"></span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" id="cancelBtn" class="btn-secondary">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn-primary">
+                        Confirmar Despesa
+                    </button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="modal.js"></script>
+</body>
+</html>
