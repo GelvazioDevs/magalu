@@ -1,0 +1,39 @@
+
+### Listar todos os clientes
+GET http://localhost:8080/clientes
+Accept: application/json
+
+###
+
+### Buscar cliente por ID
+GET http://localhost:8080/clientes/1
+Accept: application/json
+
+###
+
+### Criar novo cliente
+POST http://localhost:8080/clientes
+Content-Type: application/json
+
+{
+  "nome": "João da Silva",
+  "email": "joao@email.com",
+  "cpf": "12345678900"
+}
+
+###
+
+### Atualizar cliente existente
+PUT http://localhost:8080/clientes/1
+Content-Type: application/json
+
+{
+  "nome": "João da Silva Atualizado",
+  "email": "joaoatualizado@email.com",
+  "cpf": "12345678900"
+}
+
+###
+
+### Deletar cliente
+DELETE http://localhost:8080/clientes/1

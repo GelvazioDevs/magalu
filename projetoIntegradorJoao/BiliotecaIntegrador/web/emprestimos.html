@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca - Empréstimo</title>
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #020024;
+            background: linear-gradient(28deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+            color: #fff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 12px 8px;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(0, 212, 255, 0.2);
+        }
+
+        tr:nth-child(even) {
+            background: rgba(9, 9, 121, 0.1);
+        }
+
+        .btn {
+            background: #0099ff;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #007acc;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            color: #222;
+            padding: 32px 24px;
+            border-radius: 10px;
+            min-width: 320px;
+            /* max-width: 800px; */
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+        }
+
+        .close {
+            position: absolute;
+            right: 18px;
+            top: 12px;
+            font-size: 22px;
+            color: #222;
+            cursor: pointer;
+        }
+
+        .modal-content input,
+        .modal-content select {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0 16px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 12px;
+            }
+
+            .modal-content {
+                padding: 18px 8px;
+            }
+        }
+    </style>
+
+    <style>
+        .formulario {
+            display: flex;
+            flex-wrap: wrap;
+            
+            width: 80%;
+            margin: 0 auto;
+            /* background:red; */
+            box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+            border-radius: 10px;
+            padding: 24px;
+            justify-content: center;
+            gap:75px;
+        }
+
+        .parte1, .parte2 {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="index.html"
+            style="display:inline-block;margin-bottom:24px;text-decoration:none;color:#fff;font-weight:bold;">
+            &#8592; Voltar para a Página Inicial
+        </a>
+        <h1>Cadastro de Emprestimos</h1>
+        <button class="btn" id="openModalBtn">Novo Cadastro</button>
+        <div style="overflow-x:auto;">
+            <table id="usuariosTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Senha</th>
+                        <th>Livros Emprestados</th>
+                        <th>Limite Empréstimos</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dados serão inseridos aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="cadastroModal">
+        <div class="modal-content">
+            <span class="close" id="closeModalBtn">&times;</span>
+            <h2>Novo Usuário</h2>
+            <form id="cadastroForm">
+
+                <div class="formulario">
+
+                    <div class="parte1">
+                        <label for="id">ID</label>
+                        <input type="number" id="id" name="id" min="1" required value="1">
+
+                        <label for="usuario_id">ID do Usuário</label>
+                        <input type="number" id="usuario_id" name="usuario_id" min="1" required value="10">
+
+                        <label for="livro_id">ID do Livro</label>
+                        <input type="number" id="livro_id" name="livro_id" min="1" required value="100">
+
+                        <label for="dataEmprestimo">Data do Empréstimo</label>
+                        <input type="date" id="dataEmprestimo" name="dataEmprestimo" required value="2024-06-01">
+
+                        <label for="dataDevolucaoPrevista">Data de Devolução Prevista</label>
+                        <input type="date" id="dataDevolucaoPrevista" name="dataDevolucaoPrevista" required
+                            value="2024-06-10">
+
+                        <label for="dataDevolucaoReal">Data de Devolução Real</label>
+                        <input type="date" id="dataDevolucaoReal" name="dataDevolucaoReal" value="2024-06-09">
+
+                    </div>
+
+                    <div class="parte2">
+                        <label for="multaAplicada">Multa Aplicada</label>
+                        <input type="number" id="multaAplicada" name="multaAplicada" step="0.01" min="0" value="0.00">
+
+                        <label for="statusEmprestimo">Status</label>
+                        <select id="statusEmprestimo" name="statusEmprestimo" required>
+                            <option value="Ativo" selected>Ativo</option>
+                            <option value="Finalizado">Finalizado</option>
+                            <option value="Atrasado">Atrasado</option>
+                        </select>
+
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" required value="Teste Usuário">
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required value="teste@teste.com">
+
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" name="senha" required value="123456">
+
+                        <label for="listaLivroEmprestado">Livros Emprestados (IDs separados por vírgula)</label>
+                        <input type="text" id="listaLivroEmprestado" name="listaLivroEmprestado" value="100,101">
+
+                        <label for="limiteEmprestimos">Limite de Empréstimos</label>
+                        <input type="number" id="limiteEmprestimos" name="limiteEmprestimos" min="1" required value="5">
+
+                        <label for="statusUsuario">Status</label>
+                        <select id="statusUsuario" name="statusUsuario" required>
+                            <option value="Ativo" selected>Ativo</option>
+                            <option value="Inativo">Inativo</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <button type="submit" class="btn" style="width:100%;">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const baseUrl = 'https://sua-api.com/usuarios'; // Altere para sua API real
+
+        // Modal logic
+        const modal = document.getElementById('cadastroModal');
+        const openModalBtn = document.getElementById('openModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        openModalBtn.onclick = () => { modal.style.display = 'flex'; };
+        closeModalBtn.onclick = () => { modal.style.display = 'none'; };
+        window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+
+        // Fetch and render users
+        async function fetchUsuarios() {
+            try {
+                const res = await fetch(baseUrl);
+                const data = await res.json();
+                renderUsuarios(data);
+            } catch (err) {
+                document.querySelector('#usuariosTable tbody').innerHTML =
+                    `<tr><td colspan="7">Erro ao carregar dados.</td></tr>`;
+            }
+        }
+
+        function renderUsuarios(usuarios) {
+            const tbody = document.querySelector('#usuariosTable tbody');
+            if (!usuarios.length) {
+                tbody.innerHTML = `<tr><td colspan="7">Nenhum usuário encontrado.</td></tr>`;
+                return;
+            }
+            tbody.innerHTML = usuarios.map(u => `
+                <tr>
+                    <td>${u.id}</td>
+                    <td>${u.nome}</td>
+                    <td>${u.email}</td>
+                    <td>${u.senha}</td>
+                    <td>${u.listaLivroEmprestado}</td>
+                    <td>${u.limiteEmprestimos}</td>
+                    <td>${u.status}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Cadastro form
+        document.getElementById('cadastroForm').onsubmit = async function (e) {
+            e.preventDefault();
+            const form = e.target;
+            const usuario = {
+                nome: form.nome.value,
+                email: form.email.value,
+                senha: form.senha.value,
+                listaLivroEmprestado: form.listaLivroEmprestado.value,
+                limiteEmprestimos: Number(form.limiteEmprestimos.value),
+                status: form.status.value
+            };
+            try {
+                await fetch(baseUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(usuario)
+                });
+                modal.style.display = 'none';
+                form.reset();
+                fetchUsuarios();
+            } catch (err) {
+                alert('Erro ao cadastrar usuário.');
+            }
+        };
+
+        // Inicialização
+        fetchUsuarios();
+    </script>
+</body>

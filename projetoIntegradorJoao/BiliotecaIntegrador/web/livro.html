@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca - Livro</title>
+</head>
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        min-height: 100vh;
+        background: #020024;
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+        font-family: 'Segoe UI', Arial, sans-serif;
+        color: #fff;
+        box-sizing: border-box;
+    }
+    h1 {
+        text-align: center;
+        margin-top: 32px;
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    #livros-container {
+        max-width: 600px;
+        margin: 32px auto 24px auto;
+        background: rgba(255,255,255,0.07);
+        border-radius: 12px;
+        padding: 24px 32px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    }
+    #livros-container ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    #livros-container li {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+        font-size: 1.08rem;
+    }
+    #livros-container li:last-child {
+        border-bottom: none;
+    }
+    #abrir-modal {
+        display: block;
+        margin: 0 auto 32px auto;
+        padding: 12px 32px;
+        background: linear-gradient(90deg, #009ffd 0%, #2a2a72 100%);
+        color: #fff;
+        border: none;
+        border-radius: 24px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background 0.2s;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    #abrir-modal:hover {
+        background: linear-gradient(90deg, #2a2a72 0%, #009ffd 100%);
+    }
+    #modal-cadastro {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        background: rgba(2,0,36,0.85);
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+    #modal-cadastro[style*="display: flex"] {
+        display: flex !important;
+    }
+    #modal-cadastro > div {
+        background: #fff;
+        color: #222;
+        padding: 32px 28px 24px 28px;
+        border-radius: 14px;
+        min-width: 320px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+        position: relative;
+        max-width: 90vw;
+    }
+    #modal-cadastro h2 {
+        margin-top: 0;
+        margin-bottom: 18px;
+        font-size: 1.4rem;
+        color: #222;
+        text-align: center;
+    }
+    #form-cadastro label {
+        font-weight: 500;
+        margin-bottom: 4px;
+        display: block;
+        color: #222;
+    }
+    #form-cadastro input[type="text"],
+    #form-cadastro input[type="number"] {
+        width: 100%;
+        padding: 8px 10px;
+        margin-bottom: 14px;
+        border: 1px solid #bdbdbd;
+        border-radius: 6px;
+        font-size: 1rem;
+        background: #f6f6f6;
+        color: #222;
+        box-sizing: border-box;
+        transition: border 0.2s;
+    }
+    #form-cadastro input:focus {
+        border: 1.5px solid #009ffd;
+        outline: none;
+    }
+    #form-cadastro button[type="submit"] {
+        background: linear-gradient(90deg, #009ffd 0%, #2a2a72 100%);
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 28px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: background 0.2s;
+    }
+    #form-cadastro button[type="submit"]:hover {
+        background: linear-gradient(90deg, #2a2a72 0%, #009ffd 100%);
+    }
+    #fechar-modal {
+        background: #eee;
+        color: #222;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 22px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    #fechar-modal:hover {
+        background: #bdbdbd;
+    }
+    @media (max-width: 700px) {
+        #livros-container {
+            padding: 16px 8px;
+        }
+        #modal-cadastro > div {
+            min-width: 90vw;
+            padding: 18px 8px 14px 8px;
+        }
+    }
+</style>
+<body>
+    <a href="index.html" style="display:inline-block;margin-bottom:24px;text-decoration:none;color:#fff;font-weight:bold;">
+            &#8592; Voltar para a Página Inicial
+        </a>
+    <h1>Livros Disponíveis</h1>
+    
+    <div id="livros-container"></div>
+    <button id="abrir-modal">Cadastrar Livro</button>
+
+    <!-- Modal de Cadastro -->
+    <div id="modal-cadastro" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
+        <div style="background:#fff; padding:20px; border-radius:8px; min-width:300px; position:relative;">
+            <h2>Cadastrar Livro</h2>
+            <form id="form-cadastro">
+                <label for="nome">Titulo:</label><br>
+                <input type="text" id="nome" name="nome" required><br>
+                <label for="autor">Autor:</label><br>
+                <input type="text" id="autor" name="autor" required><br>
+                
+                <label for="editora">Editora:</label><br>
+                <input type="text" id="editora" name="editora" required><br>
+
+                <label for="genero">Gênero:</label><br>
+                <input type="text" id="genero" name="genero" required><br>
+
+                <label for="idioma">Idioma:</label><br>
+                <input type="text" id="idioma" name="idioma" required><br>
+
+                <label for="ano">Ano:</label><br>
+                <input type="number" id="ano" name="ano" required><br><br>
+
+                <label for="preco">Preço:</label><br>
+                <input type="number" id="preco" name="preco" step="
+
+                <label for="editora">status:</label><br>
+                <select name="status" id="status">
+                    <option value="disponivel">Disponível</option>
+                    <option value="indisponivel">Indisponível</option>
+                    <option value="manutencao">Manutenção</option>
+                    <option value="emprestado">Emprestado</option>
+                </select><br>
+
+                <button type="submit">Cadastrar</button>
+                <button type="button" id="fechar-modal">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    const BASE_URL = 'http://localhost:8080/api/v1'; // ajuste conforme necessário
+
+    // Consulta de livros
+    async function carregarLivros() {
+        const resp = await fetch(`${BASE_URL}/livros`);
+        const livros = await resp.json();
+        const container = document.getElementById('livros-container');
+        container.innerHTML = '<ul>' + livros.map(livro =>
+            `<li>
+                <strong>${livro.titulo}</strong> - 
+                Autor: ${livro.autor} - 
+                Editora: ${livro.editora} - 
+                Gênero: ${livro.genero} - 
+                Idioma: ${livro.idioma} - 
+                Ano: ${livro.ano} - 
+                Preço: R$ ${livro.preco} - 
+                Status: ${livro.status}
+            </li>`
+        ).join('') + '</ul>';
+    }
+
+    // Modal
+    const modal = document.getElementById('modal-cadastro');
+    document.getElementById('abrir-modal').onclick = () => modal.style.display = 'flex';
+    document.getElementById('fechar-modal').onclick = () => modal.style.display = 'none';
+
+    // Cadastro de livro
+    document.getElementById('form-cadastro').onsubmit = async function(e) {
+        e.preventDefault();
+        const data = {
+            titulo: this.nome.value,
+            autor: this.autor.value,
+            editora: this.editora.value,
+            genero: this.genero.value,
+            idioma: this.idioma.value,
+            ano: this.ano.value,
+            preco: this.preco.value,
+            status: this.status.value
+        };
+        await fetch(`${BASE_URL}/livros`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+        modal.style.display = 'none';
+        carregarLivros();
+    };
+
+    carregarLivros();
+    </script>
+</body>
+</html>

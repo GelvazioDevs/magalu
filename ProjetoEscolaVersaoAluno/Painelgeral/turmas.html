@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Turmas</title>
+  <link rel="stylesheet" href="usuarios.css">
+  <link rel="stylesheet" href="turmas.css">
+</head>
+<body>
+  <div class="light-bg-anim"></div>
+  <div class="luz-linha"></div>
+  <div class="layout">
+    <div id="sidebar"></div>
+    <div class="content">
+      <h2>Gestão de Turmas</h2>
+      <div class="search-box">
+        <select id="filtroAno">
+          <option value="">Ano</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+        </select>
+        <select id="filtroTurno">
+          <option value="">Turno</option>
+          <option value="MANHÃ">Manhã</option>
+          <option value="TARDE">Tarde</option>
+          <option value="NOITE">Noite</option>
+        </select>
+        <input type="text" id="pesquisaTurma" placeholder="Pesquisar turma...">
+      </div>
+      <div class="turmas-tabela-container">
+        <table id="tabelaTurmas" class="turmas-tabela">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Turma</th>
+              <th>Ano</th>
+              <th>Turno</th>
+              <th>Qtd</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="../Scripts/md5.js"></script>
+  <script>
+    fetch('sidebar.html').then(res => res.text()).then(data => {
+      document.getElementById('sidebar').innerHTML = data;
+      const usuario = JSON.parse(localStorage.getItem('usuarioLogado')) || { nome: 'Convidado', cargo: 'Convidado', email: '' };
+      document.getElementById('sidebarUsuarioNome').textContent = usuario.nome || 'Convidado';
+      document.getElementById('sidebarUsuarioCargo').textContent = usuario.cargo || 'Convidado';
+      const avatar = document.getElementById('sidebarUsuarioAvatar');
+      if (usuario.email) {
+        const hash = md5(usuario.email.trim().toLowerCase());
+        avatar.src = `https://www.gravatar.com/avatar/${hash}?d=identicon&s=80`;
+      } else {
+        avatar.src = '../Imagens/Usuario.png';
+      }
+      avatar.alt = usuario.nome || 'Convidado';
+    });
+    function renderTabela(turmas) {
+      const corpo = document.querySelector('#tabelaTurmas tbody');
+      corpo.innerHTML = '';
+      turmas.forEach((t, idx) => {
+        corpo.innerHTML += `<tr>
+          <td><button class="seta-abrir${t.aberta ? ' aberta' : ''}" onclick="abrirTurma(${idx})">&#9660;</button></td>
+          <td>${t.nome}</td>
+          <td>${t.ano}</td>
+          <td>${t.turno}</td>
+          <td>${t.qtd}</td>
+        </tr>`;
+        if (t.aberta) {
+          corpo.innerHTML += `<tr><td colspan="5" class="turmas-detalhes">
+            <strong>Alunos:</strong> ${t.alunos.join(', ')}<br>
+            <strong>Professores:</strong> ${t.professores.join(', ')}
+          </td></tr>`;
+        }
+      });
+    }
+    window.abrirTurma = function(idx) {
+      turmas[idx].aberta = !turmas[idx].aberta;
+      renderTabela(turmas);
+    }
+    // Mock para simular a futura API
+    let turmas = [];
+    async function atualizarTabela() {
+      const termo = document.getElementById('pesquisaTurma').value.toLowerCase();
+      const ano = document.getElementById('filtroAno').value;
+      const turno = document.getElementById('filtroTurno').value;
+      let filtradas = turmas.filter(t => {
+        let ok = true;
+        if (ano && t.ano !== ano) ok = false;
+        if (turno && t.turno !== turno) ok = false;
+        if (termo && !(`${t.nome}`.toLowerCase().includes(termo))) ok = false;
+        return ok;
+      });
+      renderTabela(filtradas);
+    }
+    document.getElementById('pesquisaTurma').addEventListener('input', atualizarTabela);
+    document.getElementById('filtroAno').addEventListener('change', atualizarTabela);
+    document.getElementById('filtroTurno').addEventListener('change', atualizarTabela);
+    atualizarTabela();
+  </script>
+</body>
+</html>

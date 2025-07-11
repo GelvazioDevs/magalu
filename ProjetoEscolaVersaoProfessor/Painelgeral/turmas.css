@@ -1,0 +1,72 @@
+@import url('usuarios.css');
+
+/* Estilos específicos para turmas, mantendo padrão visual */
+.turmas-tabela-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px #2e86de33;
+  padding: 16px 0 24px 0;
+  border: 5px solid #2e86de;
+}
+.turmas-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: 0.98rem;
+}
+.turmas-tabela th, .turmas-tabela td {
+  border-bottom: 1.5px solid #2e86de;
+  padding: 8px 10px;
+  text-align: left;
+  color: #222;
+}
+.turmas-tabela th {
+  background: #003366;
+  color: #e3f0ff;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.turmas-tabela tr {
+  transition: background 0.2s;
+}
+.turmas-tabela tr:hover {
+  background: #e3f0ff;
+}
+.turmas-tabela .seta-abrir {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #2e86de;
+  background: none;
+  border: none;
+  outline: none;
+  transition: transform 0.2s;
+  vertical-align: middle;
+}
+.turmas-tabela .seta-abrir.aberta {
+  transform: rotate(180deg);
+}
+.turmas-detalhes {
+  background: #e3f0ff;
+  color: #003366;
+  font-size: 0.95rem;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 2px 8px #2e86de22;
+  padding: 10px 24px 16px 32px;
+}
+.content h2, .content h3 {
+  color: #fff;
+  text-shadow: 0 2px 8px #000, 0 0 2px #2e86de;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+@media (max-width: 700px) {
+  .turmas-tabela-container { max-width: 98vw; }
+  .turmas-tabela th, .turmas-tabela td { font-size: 0.93rem; padding: 6px 4px; }
+}
+@media (max-width: 500px) {
+  .turmas-tabela-container { padding: 0 2px; }
+  .turmas-tabela th, .turmas-tabela td { font-size: 0.89rem; }
+}

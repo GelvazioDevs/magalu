@@ -1,0 +1,148 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #000 !important;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+.light-bg-anim {
+  background: #000 !important;
+}
+.luz-linha {
+  position: fixed;
+  top: 0; left: 0; height: 100vh; width: 100vw;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, #000000 50%, transparent 100%);
+  background-size: 200% 100%;
+  background-position: 0% 0%;
+  animation: linha-luz-move 1.5s linear infinite alternate;
+  opacity: 0.45;
+  filter: blur(0.5px) brightness(2) drop-shadow(0 0 18px #2e86de);
+}
+@keyframes linha-luz-move {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; }
+}
+.layout {
+  display: flex;
+  position: relative;
+  z-index: 2;
+}
+.sidebar {
+  width: 220px;
+  background-color: #004991;
+  color: white;
+  min-height: 100vh;
+  padding: 32px 0 0 0;
+  border-right: 5px solid #fff;
+  z-index: 2;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar li {
+  padding: 0;
+}
+/* Sidebar links e imagens já são estilizados por usuarios.css */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+#escola-flash-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+}
+#escola-flash-bg img.painel-escola-bg {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  filter: brightness(0.45) contrast(1.1);
+}
+#escola-flash-bg::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
+  pointer-events: none;
+}
+.painel-conteudo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 100vw;
+  max-width: 600px;
+  text-align: center;
+  padding: 32px 16px;
+  background: none;
+}
+.painel-conteudo h1,
+.painel-conteudo p {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 2px 12px #000, 0 0 2px #0033cc;
+  position: static;
+  animation: none;
+}
+.painel-conteudo h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin: 0 0 18px 0;
+  padding: 0 16px;
+}
+.painel-conteudo p {
+  font-size: 1.3rem;
+  margin: 0 0 18px 0;
+  padding: 0 16px;
+}
+#linha-transicao-azul {
+  position: fixed;
+  top: 0; left: -100vw;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(90deg, rgba(0,51,204,0.22) 0%, rgba(46,134,222,0.33) 60%, rgba(0,195,255,0.22) 100%);
+  box-shadow: 0 0 64px 16px rgba(46,134,222,0.18);
+  z-index: 3;
+  opacity: 1;
+  pointer-events: none;
+  transition: none;
+}
+.linha-transicao-animar {
+  animation: linhaTransicaoAzulAnim 0.45s cubic-bezier(.7,0,.7,1) forwards;
+}
+@keyframes linhaTransicaoAzulAnim {
+  0% { left: -100vw; opacity: 1; }
+  80% { left: 0vw; opacity: 1; }
+  100% { left: 100vw; opacity: 0; }
+}
+/* Responsividade para painel-escola-gif (se usado futuramente) */
+@media (max-width: 500px) {
+  .painel-escola-gif {
+    width: 90vw;
+    height: 120px;
+  }
+}
+@media (max-width: 700px) {
+  .painel-escola-gif {
+    height: 30vh;
+    min-height: 120px;
+  }
+}

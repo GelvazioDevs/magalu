@@ -28,9 +28,13 @@
 - **Preço**: Valor do produto
 - **Preço Promocional**: Valor com desconto (opcional)
 - **Categoria**: Eletrônicos, Roupas, Livros, etc.
+<<<<<<< HEAD
 - Estoque
 
 
+=======
+- **Estoque**: Quantidade no estoque
+>>>>>>> 455fbd19e6686c651b94260a686658a51071bfe2
 
 [#### 3. Cadastro de Pedidos
 - **ID do Pedido**: Código único do pedido
@@ -56,6 +60,7 @@
 - **Preço Total**: Preço unitário × quantidade
 - **Desconto Aplicado**: Valor do desconto no item
 
+<<<<<<< HEAD
 [Prompts
 
 Crie uma pagina de ecommerce com as seguintes areas:
@@ -73,6 +78,8 @@ cadastro de pedidos -
 	itens dos pedidos
 	
 	
+=======
+>>>>>>> 455fbd19e6686c651b94260a686658a51071bfe2
 
 [### Estrutura do Banco de Dados PostgreSQL:
 

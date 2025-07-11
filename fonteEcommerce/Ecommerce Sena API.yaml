@@ -1,0 +1,832 @@
+type: collection.insomnia.rest/5.0
+name: ProjetosSenac
+meta:
+  id: wrk_624329fe6ef948e28be6c3de841b57e2
+  created: 1750785554922
+  modified: 1750785554922
+  description: ""
+collection:
+  - name: SistemaSenac
+    meta:
+      id: fld_ad0403b030a6485aa5d7ae006b3df4cd
+      created: 1716331464434
+      modified: 1749833128662
+      sortKey: -1716331464434
+      description: ""
+    scripts:
+      afterResponse: ""
+      preRequest: ""
+  - name: PareAzul
+    meta:
+      id: fld_55d00d23ea0440e6a8bccf7624c5e4e8
+      created: 1718668233046
+      modified: 1752213385829
+      sortKey: -1718668233046
+      description: ""
+    children:
+      - url: ""
+        name: Usuario
+        meta:
+          id: ws-req_5cb98e00625c4efb8ece3e5b19bbacd5
+          created: 1718668239464
+          modified: 1749833128655
+          description: ""
+          sortKey: -1718668239465
+        settings:
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+      - url: ""
+        name: Cartao
+        meta:
+          id: ws-req_d68e65987709497ca82407198b36e62b
+          created: 1720563809221
+          modified: 1749833128657
+          description: ""
+          sortKey: -1720563809221
+        settings:
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+      - url: ""
+        name: Estacionamento
+        meta:
+          id: ws-req_80e8e0ec956843c1a7717c057923ab08
+          created: 1720564539086
+          modified: 1749833128659
+          description: ""
+          sortKey: -1719616024343
+        settings:
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+      - url: ""
+        name: Veiculos
+        meta:
+          id: ws-req_e3409af0cba1467083ee63424733a3e8
+          created: 1720564762447
+          modified: 1749833128662
+          description: ""
+          sortKey: -1720089916782
+        settings:
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+      - url: ""
+        name: Credito
+        meta:
+          id: ws-req_9c6853cf86414881a47992e65de24e9a
+          created: 1721085381949
+          modified: 1749833128661
+          description: ""
+          sortKey: -1718668236255.5
+        settings:
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+    scripts:
+      afterResponse: ""
+      preRequest: ""
+  - name: DevFinance
+    meta:
+      id: fld_cb378a42472b411cbaf7b26e2ec63d51
+      created: 1749658206458
+      modified: 1749833128661
+      sortKey: -1717795049767.5
+      description: ""
+    children:
+      - url: ""
+        name: Usuario
+        meta:
+          id: ws-req_c3b269e4ec8547c88e512fddc5e7449b
+          created: 1749658206460
+          modified: 1749833128658
+          description: ""
+          sortKey: -1718668239465
+        settings:
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+      - url: ""
+        name: Receita
+        meta:
+          id: ws-req_054a149f4a1b43b3ac27b008fcd473ee
+          created: 1749658206470
+          modified: 1749833128645
+          description: ""
+          sortKey: -1719616024343
+        settings:
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+      - url: ""
+        name: Despesa
+        meta:
+          id: ws-req_2fc8e2aa3f36461488744a3452132c0e
+          created: 1749658206474
+          modified: 1749833128659
+          description: ""
+          sortKey: -1720089916782
+        settings:
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+    scripts:
+      afterResponse: ""
+      preRequest: ""
+  - name: SistemaECommerce
+    meta:
+      id: fld_d19db37c9efb402289af04674e3498a4
+      created: 1750180735674
+      modified: 1752213132998
+      sortKey: -1750180735675
+      description: ""
+    children:
+      - name: Usuario
+        meta:
+          id: fld_0c063e65cd0e4271b55b1ecd3a560c7a
+          created: 1750186082154
+          modified: 1750186082154
+          sortKey: -1750186082154
+          description: ""
+        children:
+          - url: http://localhost:8080/api/v1/usuario
+            name: listarUsuarios
+            meta:
+              id: req_930a73b2b45544429330b344ab8c7e4a
+              created: 1750180747364
+              modified: 1751392816523
+              isPrivate: false
+              description: ""
+              sortKey: -1750186095266
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/v1/usuario
+            name: inserirUsuario
+            meta:
+              id: req_4367664726b4430fa482a5df853cfe82
+              created: 1750184131424
+              modified: 1751391041515
+              isPrivate: false
+              description: ""
+              sortKey: -1750186095466
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"id": "6",
+                	"name": "Gelvazio Camargo",
+                	"username": "senac",
+                	"email": "senac@email.com",
+                	"pass": "Senac.2025"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/usuario/1
+            name: excluirUsuario
+            meta:
+              id: req_5d67a168deb9419584179b46e874e89a
+              created: 1750184418767
+              modified: 1752213580842
+              isPrivate: false
+              description: ""
+              sortKey: -1750186095666
+            method: DELETE
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/usuario/1
+            name: alterarUsuario
+            meta:
+              id: req_b54c0346bd4b433390208a3661a9f5dc
+              created: 1750184596168
+              modified: 1752213550730
+              isPrivate: false
+              description: ""
+              sortKey: -1750186095566
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                		"id": "1",
+                		"name": "Gelvazio Camargo ALTERADO 3",
+                		"username": "senac",
+                		"email": "senac@email.com",
+                		"pass": "Senac.2025"
+                	}
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/usuario/?id=1
+            name: listarUsuarioUnico
+            meta:
+              id: req_49a4cad943bb4df5a73f9074a295213c
+              created: 1750184738809
+              modified: 1752213568175
+              isPrivate: false
+              description: ""
+              sortKey: -1750186095366
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: Pedidos
+        meta:
+          id: fld_73a7d3f994b740628793951d4af10861
+          created: 1750186646198
+          modified: 1752213331039
+          sortKey: -1750186646198
+          description: ""
+        children:
+          - url: http://localhost:8080/api/v1/pedido
+            name: listarPedido
+            meta:
+              id: req_9a835cba48774291acc46ed55af4083f
+              created: 1750188846513
+              modified: 1752213402923
+              isPrivate: false
+              description: ""
+              sortKey: -1750188846513
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/v1/pedido
+            name: inserirPedido
+            meta:
+              id: req_5d55f974b7af494b87b9953d7b18b899
+              created: 1750188899962
+              modified: 1752213438457
+              isPrivate: false
+              description: ""
+              sortKey: -1750187471089.5
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"id": "2",
+                	"name": "Leanne Graham 2",
+                	"email": "Sincere@april.biz",
+                	"celular": "47988631515",
+                	"cidade": "RIO DO SUL"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/v1/pedido
+            name: alterarPedido
+            meta:
+              id: req_39cf4bb12a7b4823be12107c5a0364cd
+              created: 1750188980286
+              modified: 1752213495049
+              isPrivate: false
+              description: ""
+              sortKey: -1750186783377.75
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"id": "1",
+                	"name": "Leanne Graham ALTERADO",
+                	"email": "Sincere@april.biz",
+                	"celular": "47988631515",
+                	"cidade": "RIO DO SUL"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/pedido/1
+            name: excluirPedido
+            meta:
+              id: req_6fcc095eaa7a4a55a1336ad022933b6d
+              created: 1750189009421
+              modified: 1752213429546
+              isPrivate: false
+              description: ""
+              sortKey: -1750188158801.25
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/v1/pedido/1
+            name: listarPedidoUnico
+            meta:
+              id: req_5ca3c40cdb5d4077adea7ed4df1ebe6b
+              created: 1750189029080
+              modified: 1752213416102
+              isPrivate: false
+              description: ""
+              sortKey: -1750188502657.125
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: Compras
+        meta:
+          id: fld_a55520e09e1a4538a88643fc020ea699
+          created: 1751395972216
+          modified: 1752213237583
+          sortKey: -1750186364176
+          description: ""
+        children:
+          - url: http://localhost:8080/api/v1/compra
+            name: listarCompra
+            meta:
+              id: req_f5fa81126fdb4ade9ade6cfa812c3d19
+              created: 1751395972217
+              modified: 1752213506983
+              isPrivate: false
+              description: ""
+              sortKey: -1750188846513
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/v1/compra
+            name: inserirCompra
+            meta:
+              id: req_7fac962ffca3452d960c3fb36c9aa17c
+              created: 1751395972219
+              modified: 1752213524582
+              isPrivate: false
+              description: ""
+              sortKey: -1750187471089.5
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                    "descricao": "RIO DO SUL",
+                    "uf": "SC",
+                    "regiaoid": 1
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/v1/compra/2
+            name: alterarCompra
+            meta:
+              id: req_d7f444f9abaf457cb51657fedfc6ad98
+              created: 1751395972220
+              modified: 1752213531197
+              isPrivate: false
+              description: ""
+              sortKey: -1750186783377.75
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"id": "1",
+                	"name": "Leanne Graham ALTERADO",
+                	"email": "Sincere@april.biz",
+                	"celular": "47988631515",
+                	"cidade": "RIO DO SUL"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/v1/compra/3
+            name: excluirCompra
+            meta:
+              id: req_8d0c05ca7fd848de80a9c437c55fe0a8
+              created: 1751395972221
+              modified: 1752213519868
+              isPrivate: false
+              description: ""
+              sortKey: -1750188158801.25
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/v1/compra/1
+            name: listarCompraUnico
+            meta:
+              id: req_2bc7106d06184d16a8cc4e41f1ecaaa1
+              created: 1751395972222
+              modified: 1752213513701
+              isPrivate: false
+              description: ""
+              sortKey: -1750188502657.125
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: Produto
+        meta:
+          id: fld_9ee84059f9634d28acdd0915b724b44a
+          created: 1751396838420
+          modified: 1751396838420
+          sortKey: -1750186223165
+          description: ""
+        children:
+          - url: http://localhost:8080/api/v1/produto
+            name: listarProduto
+            meta:
+              id: req_5474ebbbc3e84406b51089f01199fd81
+              created: 1751396838422
+              modified: 1751396964297
+              isPrivate: false
+              description: ""
+              sortKey: -1750188846513
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/v1/produto
+            name: inserirProduto
+            meta:
+              id: req_0c48704754024b8c8eebeae13fc253e6
+              created: 1751396838423
+              modified: 1751396927539
+              isPrivate: false
+              description: ""
+              sortKey: -1750187471089.5
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"descricao": "COMPUTADOR",
+                	"preco": 4558.68,
+                	"estoque": 100
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/v1/produto/2
+            name: alterarProduto
+            meta:
+              id: req_32c2d53f6274457f9184b5ad01acfaea
+              created: 1751396838425
+              modified: 1751396939267
+              isPrivate: false
+              description: ""
+              sortKey: -1750186783377.75
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"descricao": "COMPUTADOR",
+                	"preco": 4558.68,
+                	"estoque": 100
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/v1/produto/3
+            name: excluirProduto
+            meta:
+              id: req_970f56fba68f48219b81a29e9ec662ce
+              created: 1751396838426
+              modified: 1751396953534
+              isPrivate: false
+              description: ""
+              sortKey: -1750188158801.25
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/api/v1/produto/1
+            name: listarProdutoUnico
+            meta:
+              id: req_27e5d1dc83344c438d2956eeba1ba576
+              created: 1751396838427
+              modified: 1751396970208
+              isPrivate: false
+              description: ""
+              sortKey: -1750188502657.125
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.2.0
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+    scripts:
+      afterResponse: ""
+      preRequest: ""
+  - url: ""
+    name: TESTE-API
+    meta:
+      id: ws-req_55b347558073416b9bfe8fc0f6c3e828
+      created: 1749843640936
+      modified: 1749843640936
+      description: ""
+      sortKey: -1749843640936
+    settings:
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_18274453df4c43e2aecf7a50f3d15400
+    created: 1749833142054
+    modified: 1749833142054
+environments:
+  name: Base Environment
+  meta:
+    id: env_d06fa11536d2439782d917cc329222cb
+    created: 1716574842184
+    modified: 1749833128634
+    isPrivate: false
+  data:
+    urlBase: "http://localhost:"
+  subEnvironments:
+    - name: Local
+      meta:
+        id: env_ad3f11becd3f464fac3e65f8f38a3d40
+        created: 1720568938256
+        modified: 1749833128625
+        isPrivate: false
+        sortKey: 1720568938255
+      data:
+        port: "8080"
+        urlBase: "http://localhost:"
+    - name: producao
+      meta:
+        id: env_9db198b597a44d3c9f77019fb9b69bb8
+        created: 1720568965697
+        modified: 1749833128605
+        isPrivate: false
+        sortKey: 1720568938305
+      data:
+        port: "8081"
+        urlBase: "http://localhost:"
